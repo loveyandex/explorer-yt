@@ -40,7 +40,10 @@ export default function TransactionsPage() {
         <Typography variant="h3" marginBottom={2}>
           {userTxnOnly ? "User Transactions" : "All Transactions"}
         </Typography>
-        {isGraphqlClientSupported && (
+        <hr/>
+        isGraphqlClientSupported : {isGraphqlClientSupported}
+        <hr/>
+        {true && (
           <Button onClick={toggleUserTxnOnly} variant="text">
             {userTxnOnly ? `View All Transactions` : `View User Transactions`}
           </Button>

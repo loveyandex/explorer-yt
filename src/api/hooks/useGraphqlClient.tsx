@@ -18,7 +18,7 @@ function getIsGraphqlClientSupportedFor(networkName: NetworkName): boolean {
 function getGraphqlURI(networkName: NetworkName): string | undefined {
   switch (networkName) {
     case "mainnet":
-      return process.env.REACT_APP_INDEXER_GRAPHQL_MAINNET;
+      return "https://indexer.mainnet.aptoslabs.com/v1/graphql";
     case "testnet":
       return process.env.REACT_APP_INDEXER_GRAPHQL_TESTNET;
     case "devnet":
@@ -33,6 +33,8 @@ function getGraphqlURI(networkName: NetworkName): string | undefined {
 function getGraphqlClient(
   networkName: NetworkName,
 ): ApolloClient<NormalizedCacheObject> {
+
+
   return new ApolloClient({
     link: new HttpLink({
       uri: getGraphqlURI(networkName),
@@ -68,7 +70,7 @@ export function useGetIsGraphqlClientSupported(): boolean {
   const [state, _] = useGlobalState();
   const [isGraphqlClientSupported, setIsGraphqlClientSupported] =
     useState<boolean>(getIsGraphqlClientSupportedFor(state.network_name));
-
+    console.log(state)
   useEffect(() => {
     setIsGraphqlClientSupported(
       getIsGraphqlClientSupportedFor(state.network_name),
