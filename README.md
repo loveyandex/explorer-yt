@@ -1,4 +1,4 @@
-# Aptos Explorer
+# YT Explorer
 
 ## How to use
 
